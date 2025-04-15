@@ -1,0 +1,143 @@
+// product-dialog.component.scss
+
+// Color variables
+$primary-color: #3f51b5;
+$accent-color: #ff4081;
+$warn-color: #f44336;
+$text-color: #333333;
+
+.mat-dialog-container {
+  border-radius: 12px !important;
+  padding: 24px !important;
+  max-width: 600px; // Control dialog max width
+}
+
+h2.mat-dialog-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: $primary-color;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba($primary-color, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.mat-dialog-content {
+  padding: 16px 0 !important;
+  
+  .form-container {
+    display: grid;
+    gap: 1.5rem;
+    padding: 0 8px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+  
+  .mat-form-field-outline {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+
+  .mat-form-field-label {
+    color: rgba($text-color, 0.7);
+  }
+
+  .mat-input-element {
+    color: $text-color;
+    font-size: 1rem;
+  }
+
+  &.mat-focused {
+    .mat-form-field-outline-thick {
+      color: $primary-color;
+    }
+    .mat-form-field-label {
+      color: $primary-color;
+    }
+  }
+}
+
+textarea.mat-input-element {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.mat-dialog-actions {
+  padding: 16px 0 0 0 !important;
+  margin-top: 1rem;
+  
+  button {
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    
+    &[mat-button] {
+      color: rgba($text-color, 0.8);
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+    
+    &[mat-raised-button] {
+      padding: 0 24px;
+      background-color: $primary-color;
+      color: white;
+      &:hover {
+        background-color: darken($primary-color, 8%);
+        transform: translateY(-1px);
+      }
+      &:disabled {
+        background-color: rgba($primary-color, 0.5);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Error styling
+.mat-error {
+  font-size: 0.85rem;
+  color: $warn-color !important;
+  margin-top: 4px;
+}
+
+// Responsive Design
+@media (max-width: 600px) {
+  .mat-dialog-container {
+    width: 90vw !important;
+    padding: 16px !important;
+  }
+
+  h2.mat-dialog-title {
+    font-size: 1.5rem;
+  }
+
+  .mat-dialog-content {
+    padding: 8px 0 !important;
+  }
+
+  mat-form-field {
+    .mat-input-element {
+      font-size: 0.95rem;
+    }
+  }
+
+  .mat-dialog-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+    
+    button {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+// Animation for form elements
+.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

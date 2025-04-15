@@ -1,0 +1,51 @@
+.container {
+    padding: 2rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  mat-card {
+    border-radius: 8px;
+    overflow: hidden;
+    
+    mat-card-content {
+      padding: 0;
+    }
+  }
+  
+  table {
+    width: 100%;
+    
+    th {
+      font-weight: 600;
+      font-size: 14px;
+      background-color: #f5f5f5;
+    }
+    
+    td, th {
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .quantity {
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #e8f5e9;
+      
+      &.low-stock {
+        background: #ffebee;
+        color: #c62828;
+      }
+    }
+    
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }

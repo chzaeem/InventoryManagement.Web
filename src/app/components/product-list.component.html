@@ -1,0 +1,88 @@
+<!-- <div class="container mt-4">
+    <h2>Product List</h2>
+    <button (click)="navigateToAddProduct()" class="btn btn-success mb-3">Add Product</button>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products$ | async; track product.Id) {
+          <tr>
+            <td>{{ product.Id}}</td>
+            <td>{{ product.Name }}</td>
+            <td>{{ product.Description }}</td>
+            <td>{{ product.Quantity }}</td>
+            <td>
+              <a [routerLink]="['/products/edit', product.Id]" class="btn btn-primary btn-sm">Edit</a>
+              <button (click)="deleteProduct(product.Id)" class="btn btn-danger btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div> -->
+  <div class="container">
+    <div class="header">
+      <h1>Product Management</h1>
+      <button mat-raised-button color="primary" (click)="openAddEditDialog()">
+        <mat-icon></mat-icon> Add Product
+      </button>
+    </div>
+  
+    <mat-card>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+  
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+  
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+  
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element"> 
+              <span class="quantity" [class.low-stock]="element.Quantity < 10">
+                {{element.quantity}}
+              </span>
+            </td>
+          </ng-container>
+  
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="openAddEditDialog(element)">
+                edit
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteProduct(element.id)">
+               delete
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
